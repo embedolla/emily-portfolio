@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CommandPalette } from "@/components/command-palette";
+import { EasterEgg } from "@/components/easter-egg";
+import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -17,6 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Emily Bedolla — Software / AI Engineer",
   description:
     "Emily Bedolla builds with technology and cares about whether it helps people and the planet — exploring AI research, AI for good, and responsible-AI policy.",
@@ -50,6 +53,7 @@ export default function RootLayout({
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
           <CommandPalette />
+          <EasterEgg />
         </ThemeProvider>
       </body>
     </html>

@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { ArrowLeft } from "lucide-react";
 import { getAllPosts, getPost, formatDate } from "@/lib/posts";
+import { ReadingProgress } from "@/components/reading-progress";
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -35,6 +36,7 @@ export default async function BlogPost({
 
   return (
     <article className="mx-auto w-full max-w-2xl px-6 py-20 sm:py-28">
+      <ReadingProgress />
       <Link
         href="/blog"
         className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
