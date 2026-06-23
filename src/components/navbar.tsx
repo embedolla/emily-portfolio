@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { CommandTrigger } from "@/components/command-palette";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -38,6 +39,7 @@ export function Navbar() {
               </li>
             ))}
           </ul>
+          <CommandTrigger />
           <a
             href="/resume.pdf"
             target="_blank"

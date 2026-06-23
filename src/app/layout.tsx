@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
+import { CommandPalette } from "@/components/command-palette";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -48,6 +49,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
+          <CommandPalette />
         </ThemeProvider>
       </body>
     </html>
