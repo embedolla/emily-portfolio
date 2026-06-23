@@ -66,7 +66,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground">
             <Sprout className="size-4 text-primary" />
-            Software / AI Engineer · incoming @ Amazon
+            Incoming CS @ Stanford · SWE/AI Intern @ Amazon
           </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-6xl">

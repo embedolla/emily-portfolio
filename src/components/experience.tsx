@@ -11,36 +11,28 @@ type Item = {
   upcoming?: boolean;
 };
 
-// NOTE: refine these from Emily's résumé (titles, dates, education).
 const timeline: Item[] = [
   {
     role: "Software / AI Engineer Intern",
     org: "Amazon",
     period: "Summer 2027 · Incoming",
     description:
-      "Joining Amazon as an engineering intern to build at scale and deepen my software and AI experience.",
+      "Joining Amazon to build software and AI at scale — and to keep growing as an engineer.",
     upcoming: true,
   },
   {
-    role: "Applied AI Cohort",
+    role: "Full Stack Development Intern",
+    org: "Child Poverty Action Lab (CPAL)",
+    period: "Summer 2025 & Summer 2026",
+    description:
+      "Engineered enhancements to the Birth Rate Explorer platform — improving UI/UX responsiveness and backend data retrieval, resolving bugs in JavaScript and React, and shipping a ZIP-code search tool. Collaborated cross-functionally and presented work to executive leadership, including the CEO and CTO.",
+  },
+  {
+    role: "Software Engineering Programs",
     org: "Code2College",
-    period: "Summer 2026",
+    period: "Aug 2024 – Present",
     description:
-      "Hands-on applied-AI training — building practical machine-learning and AI projects.",
-  },
-  {
-    role: "Tech Intern",
-    org: "Sepall",
-    period: "Summer 2026",
-    description:
-      "Returning for a second summer to build software and contribute to the team's technical work.",
-  },
-  {
-    role: "Tech Intern",
-    org: "Sepall",
-    period: "Summer 2025",
-    description:
-      "First internship — gained hands-on experience building and shipping real software.",
+      "Selected for competitive software programs — Software Development Essentials I, Elite 101, and Full Stack Development II. Built Python projects, learned Git/Jira and testing, won 1st place at DRW's STEM Case Competition, and earned a paid internship at CPAL through a technical interview.",
   },
 ];
 

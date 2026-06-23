@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Raw resume source (served copy lives in public/resume.pdf)
+Resume __ Emily Bedolla.pdf
