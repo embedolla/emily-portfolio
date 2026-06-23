@@ -1,5 +1,12 @@
+import Link from "next/link";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
+
+const pages = [
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Writing" },
+  { href: "/now", label: "Now" },
+];
 
 const socials = [
   { href: "https://github.com/embedolla", label: "GitHub", icon: GithubIcon },
@@ -14,6 +21,17 @@ export function Footer() {
         <p className="text-sm text-muted-foreground">
           © {2026} Emily Bedolla · Built with Next.js 🌱
         </p>
+        <nav className="flex items-center gap-4 text-sm">
+          {pages.map((p) => (
+            <Link
+              key={p.href}
+              href={p.href}
+              className="text-muted-foreground transition-colors hover:text-foreground"
+            >
+              {p.label}
+            </Link>
+          ))}
+        </nav>
         <div className="flex items-center gap-4">
           {socials.map((s) => (
             <a

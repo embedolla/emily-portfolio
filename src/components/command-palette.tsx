@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Command } from "cmdk";
+import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
   Award,
@@ -13,6 +14,8 @@ import {
   Home,
   Mail,
   Moon,
+  Newspaper,
+  Sparkles,
   Sun,
   User,
 } from "lucide-react";
@@ -35,6 +38,7 @@ const sections = [
 export function CommandPalette() {
   const [open, setOpen] = React.useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const router = useRouter();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -95,6 +99,20 @@ export function CommandPalette() {
                 {s.label}
               </Item>
             ))}
+          </Command.Group>
+
+          <Command.Group
+            heading="Pages"
+            className="px-2 py-1.5 text-xs font-medium text-muted-foreground [&_[cmdk-group-items]]:mt-1"
+          >
+            <Item onSelect={() => run(() => router.push("/blog"))}>
+              <Newspaper className="size-4 text-muted-foreground" />
+              Writing / blog
+            </Item>
+            <Item onSelect={() => run(() => router.push("/now"))}>
+              <Sparkles className="size-4 text-muted-foreground" />
+              Now page
+            </Item>
           </Command.Group>
 
           <Command.Group

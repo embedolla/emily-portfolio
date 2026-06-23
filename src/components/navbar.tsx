@@ -5,11 +5,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#mission", label: "Mission" },
-  { href: "#projects", label: "Projects" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#mission", label: "Mission" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/blog", label: "Writing" },
+  { href: "/now", label: "Now" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
