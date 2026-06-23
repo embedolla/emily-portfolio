@@ -2,9 +2,9 @@ import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 const socials = [
-  { href: "https://github.com/", label: "GitHub", icon: GithubIcon },
+  { href: "https://github.com/embedolla", label: "GitHub", icon: GithubIcon },
   { href: "https://www.linkedin.com/", label: "LinkedIn", icon: LinkedinIcon },
-  { href: "mailto:emily.bedolla@cpal.org", label: "Email", icon: Mail },
+  { href: "mailto:emily.e.bedolla@gmail.com", label: "Email", icon: Mail },
 ];
 
 export function Footer() {
