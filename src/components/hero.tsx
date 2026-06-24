@@ -73,7 +73,7 @@ export function Hero() {
             Hi, I&apos;m Emily Bedolla — <br className="hidden sm:block" />
             <span className="text-primary">
               {typed}
-              <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-primary align-middle">
+              <span className="animate-caret ml-1 inline-block w-[3px] bg-primary align-middle">
                 &nbsp;
               </span>
             </span>
