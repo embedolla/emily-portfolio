@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
-const ROLES = ["engineer", "researcher", "advocate", "builder for good"];
+const ROLES = ["engineer", "advocate", "builder for good"];
 
 function useTypewriter(words: string[], typingMs = 90, pauseMs = 1600) {
   const [index, setIndex] = React.useState(0);
@@ -70,7 +70,7 @@ export function Hero() {
           </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-6xl">
-            Hi, I&apos;m Emily — <br className="hidden sm:block" />
+            Hi, I&apos;m Emily Bedolla — <br className="hidden sm:block" />
             <span className="text-primary">
               {typed}
               <span className="ml-0.5 inline-block w-[2px] animate-pulse bg-primary align-middle">
@@ -81,8 +81,9 @@ export function Hero() {
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
             I build with technology — and I care deeply about whether it helps
-            people and the planet. I&apos;m exploring AI research, AI for good,
-            and the policy that keeps it from causing harm.
+            people and the planet. Looking ahead, I hope to work in AI research
+            and public policy that keep it from harming people or the
+            environment.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
