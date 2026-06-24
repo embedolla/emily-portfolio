@@ -49,7 +49,7 @@ const projects: Project[] = [
 export function Projects() {
   return (
     <Section id="projects" eyebrow="Projects" title="Things I've built">
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p) => (
           <article
             key={p.title}

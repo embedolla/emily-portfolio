@@ -28,7 +28,7 @@ const schools: School[] = [
 export function Education() {
   return (
     <Section id="education" eyebrow="Education" title="Where I'm learning">
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {schools.map((s) => (
           <div
             key={s.school}
