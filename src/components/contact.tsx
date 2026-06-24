@@ -139,7 +139,8 @@ export function Contact() {
           {status === "sent" ? (
             <p className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm text-primary">
               <Check className="size-4" />
-              Thank you! Your message is on its way. 🌱
+              Thank you! Your message is on its way. Expect a reply within 2
+              business days! 🌱
             </p>
           ) : (
             <button
