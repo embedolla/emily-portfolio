@@ -14,7 +14,7 @@ type SectionProps = {
 
 export function Section({ id, eyebrow, title, children, className }: SectionProps) {
   return (
-    <section id={id} className={cn("mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-20 sm:py-28", className)}>
+    <section id={id} className={cn("mx-auto w-full max-w-5xl scroll-mt-20 px-6 py-16 sm:py-28", className)}>
       {(eyebrow || title) && (
         <motion.div
           initial={{ opacity: 0, y: 16 }}

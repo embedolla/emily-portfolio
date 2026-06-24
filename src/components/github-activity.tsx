@@ -65,7 +65,7 @@ export async function GithubActivity() {
         </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 md:grid-cols-2">
         {repos.map((repo) => (
           <a
             key={repo.name}

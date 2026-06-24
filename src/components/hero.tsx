@@ -132,7 +132,7 @@ export function Hero() {
                 aria-label="GitHub"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
-                  "rounded-full",
+                  "size-10 rounded-full",
                 )}
               >
                 <GithubIcon className="size-5" />
@@ -144,7 +144,7 @@ export function Hero() {
                 aria-label="LinkedIn"
                 className={cn(
                   buttonVariants({ variant: "ghost", size: "icon" }),
-                  "rounded-full",
+                  "size-10 rounded-full",
                 )}
               >
                 <LinkedinIcon className="size-5" />

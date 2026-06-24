@@ -156,6 +156,9 @@
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+    /* Safety net: never allow stray decorative elements to cause sideways scroll.
+       `clip` (not `hidden`) keeps position: sticky working. */
+    overflow-x: clip;
   }
 }
 

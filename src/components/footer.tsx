@@ -40,7 +40,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-muted-foreground transition-colors hover:text-foreground"
+              className="-m-2 p-2 text-muted-foreground transition-colors hover:text-foreground"
             >
               <s.icon className="size-5" />
             </a>

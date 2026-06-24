@@ -48,7 +48,7 @@ export default async function BlogPost({
       <p className="mt-6 text-sm text-muted-foreground">
         {formatDate(post.date)}
       </p>
-      <h1 className="mt-1 text-4xl font-bold tracking-tight">{post.title}</h1>
+      <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{post.title}</h1>
 
       <div
         className="prose mt-8 max-w-none text-foreground
