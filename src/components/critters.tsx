@@ -2,11 +2,12 @@
 
 import * as React from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { useTheme } from "next-themes";
 import { useGroveAtmosphere, type Season } from "@/lib/grove-atmosphere";
 
 /**
  * Ambient critters that mirror the real world:
- *   night   → drifting, twinkling fireflies (any season)
+ *   night   → drifting, twinkling fireflies (dark mode only)
  *   spring  → falling cherry petals
  *   summer  → floating pollen motes
  *   autumn  → tumbling leaves
@@ -16,9 +17,13 @@ import { useGroveAtmosphere, type Season } from "@/lib/grove-atmosphere";
 export function Critters() {
   const atmo = useGroveAtmosphere();
   const reduce = useReducedMotion();
+  const { resolvedTheme } = useTheme();
 
   if (!atmo || reduce) return null;
-  if (atmo.phase === "night") return <Fireflies />;
+  // Fireflies only glow in dark mode; in light mode the night is simply still.
+  if (atmo.phase === "night") {
+    return resolvedTheme === "dark" ? <Fireflies /> : null;
+  }
   return <FallingSeason season={atmo.season} />;
 }
 

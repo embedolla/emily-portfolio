@@ -9,7 +9,6 @@ import { EasterEgg } from "@/components/easter-egg";
 import { Critters } from "@/components/critters";
 import { Sky } from "@/components/sky";
 import { ScrollVine } from "@/components/scroll-vine";
-import { CursorSprouts } from "@/components/cursor-sprouts";
 import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -61,7 +60,6 @@ export default function RootLayout({
           <EasterEgg />
           <Critters />
           <ScrollVine />
-          <CursorSprouts />
         </ThemeProvider>
       </body>
     </html>
