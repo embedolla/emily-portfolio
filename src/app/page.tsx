@@ -8,6 +8,7 @@ import { Experience } from "@/components/experience";
 import { Education } from "@/components/education";
 import { Honors } from "@/components/honors";
 import { Contact } from "@/components/contact";
+import { SectionDivider } from "@/components/section-divider";
 
 export default function Home() {
   return (
@@ -15,11 +16,14 @@ export default function Home() {
       <Hero />
       <About />
       <Mission />
+      <SectionDivider />
       <Projects />
       <GithubActivity />
+      <SectionDivider />
       <Skills />
       <Experience />
       <Education />
+      <SectionDivider />
       <Honors />
       <Contact />
     </>

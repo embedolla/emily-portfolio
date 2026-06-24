@@ -7,6 +7,9 @@ import { Footer } from "@/components/footer";
 import { CommandPalette } from "@/components/command-palette";
 import { EasterEgg } from "@/components/easter-egg";
 import { Critters } from "@/components/critters";
+import { Sky } from "@/components/sky";
+import { ScrollVine } from "@/components/scroll-vine";
+import { CursorSprouts } from "@/components/cursor-sprouts";
 import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -50,12 +53,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Sky />
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
           <CommandPalette />
           <EasterEgg />
           <Critters />
+          <ScrollVine />
+          <CursorSprouts />
         </ThemeProvider>
       </body>
     </html>
