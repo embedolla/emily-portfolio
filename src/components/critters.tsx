@@ -25,7 +25,9 @@ export function Critters() {
   if (atmo.phase === "night") {
     return dark ? <Fireflies /> : null;
   }
-  return <FallingSeason season={atmo.season} dark={dark} />;
+  // Summer has no daytime critter (the pollen was removed).
+  if (atmo.season === "summer") return null;
+  return <FallingSeason season={atmo.season} />;
 }
 
 /* -------------------------------- Fireflies ------------------------------- */
@@ -138,21 +140,9 @@ const SEASON_CONFIG: Record<Season, SeasonConfig> = {
   },
 };
 
-function FallingSeason({ season, dark }: { season: Season; dark: boolean }) {
+function FallingSeason({ season }: { season: Season }) {
   const cfg = SEASON_CONFIG[season];
   const items = Array.from({ length: cfg.count });
-
-  // Summer pollen glows like a firefly — only fitting against a dark sky.
-  // In light mode, render it as a soft, non-luminous drifting speck instead.
-  const style: React.CSSProperties =
-    season === "summer" && !dark
-      ? {
-          width: 7,
-          height: 7,
-          borderRadius: "9999px",
-          background: "rgba(200,170,110,0.5)",
-        }
-      : cfg.style;
 
   return (
     <div
@@ -168,7 +158,7 @@ function FallingSeason({ season, dark }: { season: Season; dark: boolean }) {
           <motion.span
             key={i}
             className="absolute top-0"
-            style={{ left: `${left}%`, ...style }}
+            style={{ left: `${left}%`, ...cfg.style }}
             initial={{ y: "-12vh", opacity: 0 }}
             animate={{
               y: "112vh",
