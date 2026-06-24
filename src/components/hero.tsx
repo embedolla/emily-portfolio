@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { ArrowRight, Sprout } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
@@ -57,12 +58,11 @@ export function Hero() {
         className="pointer-events-none absolute -bottom-32 right-0 size-96 rounded-full bg-accent/20 blur-3xl"
       />
 
-      <div className="mx-auto w-full max-w-5xl px-6">
+      <div className="mx-auto grid w-full max-w-5xl items-center gap-10 px-6 md:grid-cols-[1.1fr_0.9fr]">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-2xl"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground">
             <Sprout className="size-4 text-primary" />
@@ -124,6 +124,48 @@ export function Hero() {
               </a>
             </div>
           </div>
+        </motion.div>
+
+        {/* Photo cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
+          className="relative mx-auto w-full max-w-sm"
+        >
+          <div className="grid h-80 grid-cols-2 gap-3 rotate-[-2deg] sm:h-[440px]">
+            <div className="relative row-span-2 overflow-hidden rounded-2xl border-4 border-card shadow-lg">
+              <Image
+                src="/photos/tree.jpg"
+                alt="Emily smiling beside a willow tree"
+                fill
+                priority
+                sizes="(max-width: 768px) 50vw, 220px"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border-4 border-card shadow-lg">
+              <Image
+                src="/photos/cottage.jpg"
+                alt="Emily at a storybook cottage doorway"
+                fill
+                sizes="(max-width: 768px) 50vw, 220px"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative overflow-hidden rounded-2xl border-4 border-card shadow-lg">
+              <Image
+                src="/photos/sunset.jpg"
+                alt="Emily at golden hour"
+                fill
+                sizes="(max-width: 768px) 50vw, 220px"
+                className="object-cover"
+              />
+            </div>
+          </div>
+          <span className="absolute -bottom-3 -left-3 grid size-10 rotate-[-8deg] place-items-center rounded-full bg-primary text-primary-foreground shadow-md">
+            <Sprout className="size-5" />
+          </span>
         </motion.div>
       </div>
     </section>
