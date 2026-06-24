@@ -38,7 +38,7 @@ const timeline: Item[] = [
 
 export function Experience() {
   return (
-    <Section id="experience" eyebrow="Experience" title="Where I've been heading">
+    <Section id="experience" eyebrow="Experience" title="My journey so far">
       <div className="relative border-l border-border pl-8">
         {timeline.map((item, i) => (
           <div key={`${item.org}-${i}`} className="relative pb-10 last:pb-0">
