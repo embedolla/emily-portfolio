@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { CommandPalette } from "@/components/command-palette";
 import { EasterEgg } from "@/components/easter-egg";
+import { Critters } from "@/components/critters";
 import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -54,6 +55,7 @@ export default function RootLayout({
           <Footer />
           <CommandPalette />
           <EasterEgg />
+          <Critters />
         </ThemeProvider>
       </body>
     </html>
