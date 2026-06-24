@@ -7,6 +7,8 @@ import { Footer } from "@/components/footer";
 import { CommandPalette } from "@/components/command-palette";
 import { EasterEgg } from "@/components/easter-egg";
 import { Critters } from "@/components/critters";
+import { Sky } from "@/components/sky";
+import { ScrollVine } from "@/components/scroll-vine";
 import { siteUrl } from "@/lib/site";
 
 const geistSans = Geist({
@@ -30,6 +32,12 @@ export const metadata: Metadata = {
       "Building technology that helps people and the planet. AI research, AI for good, and responsible-AI policy.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emily Bedolla — Software / AI Engineer",
+    description:
+      "Building technology that helps people and the planet. AI research, AI for good, and responsible-AI policy.",
+  },
 };
 
 export default function RootLayout({
@@ -50,12 +58,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Sky />
           <Navbar />
           <main className="flex flex-1 flex-col">{children}</main>
           <Footer />
           <CommandPalette />
           <EasterEgg />
           <Critters />
+          <ScrollVine />
         </ThemeProvider>
       </body>
     </html>

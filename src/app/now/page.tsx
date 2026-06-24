@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const now = [
   {
     icon: GraduationCap,
-    text: "Getting ready to start as a CS student at Stanford this fall.",
+    text: "Getting ready to start in Symbolic Systems at Stanford this fall.",
   },
   {
     icon: Code2,

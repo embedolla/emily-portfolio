@@ -38,25 +38,11 @@ const projects: Project[] = [
     tags: ["Python", "Conversational logic"],
   },
   {
-    title: "Self-Watering Plant System",
-    period: "2023 – 2024",
-    blurb:
-      "An automated irrigation system using Arduino, moisture sensors, and a water pump. It detects soil dryness and triggers watering to conserve water — with a mobile interface to monitor moisture and water remotely. 🌱",
-    tags: ["Arduino", "Sensors", "IoT"],
-  },
-  {
     title: "Finances Tracker",
     period: "2024",
     blurb:
       "A personal finance program in Python to monitor income and expenses, with input validation, categorized expense logging, and dynamic balance updates.",
     tags: ["Python"],
-  },
-  {
-    title: "Automatic Chicken Coop Door",
-    period: "2023",
-    blurb:
-      "A motorized coop door using Arduino, servo motors, and light sensors to open and close with daylight — plus safety overrides and a weather-resistant enclosure built for the outdoors.",
-    tags: ["Arduino", "Servos", "Hardware"],
   },
 ];
 

@@ -2,7 +2,13 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import { ArrowRight, Sprout } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
@@ -42,19 +48,40 @@ function useTypewriter(words: string[], typingMs = 90, pauseMs = 1600) {
 
 export function Hero() {
   const typed = useTypewriter(ROLES);
+  const reduce = useReducedMotion();
+
+  // Pointer position, normalized to -0.5 … 0.5 across the viewport.
+  const px = useMotionValue(0);
+  const py = useMotionValue(0);
+  const { scrollY } = useScroll();
+
+  // Blobs drift opposite/with the cursor and ease apart as the page scrolls.
+  const blob1x = useTransform(px, [-0.5, 0.5], [30, -30]);
+  const blob1y = useTransform([py, scrollY], ([p, s]: number[]) => p * -56 + s * 0.18);
+  const blob2x = useTransform(px, [-0.5, 0.5], [-38, 38]);
+  const blob2y = useTransform([py, scrollY], ([p, s]: number[]) => p * 40 - s * 0.12);
+
+  function handlePointer(e: React.PointerEvent) {
+    if (reduce) return;
+    px.set(e.clientX / window.innerWidth - 0.5);
+    py.set(e.clientY / window.innerHeight - 0.5);
+  }
 
   return (
     <section
       id="home"
+      onPointerMove={handlePointer}
       className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden"
     >
-      {/* Soft Grove gradient blobs */}
-      <div
+      {/* Soft Grove gradient blobs (parallax with cursor + scroll) */}
+      <motion.div
         aria-hidden
+        style={reduce ? undefined : { x: blob1x, y: blob1y }}
         className="pointer-events-none absolute -left-24 -top-24 size-96 rounded-full bg-primary/20 blur-3xl"
       />
-      <div
+      <motion.div
         aria-hidden
+        style={reduce ? undefined : { x: blob2x, y: blob2y }}
         className="pointer-events-none absolute -bottom-32 right-0 size-96 rounded-full bg-accent/20 blur-3xl"
       />
 
@@ -66,7 +93,7 @@ export function Hero() {
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground">
             <Sprout className="size-4 text-primary" />
-            Incoming CS @ Stanford · SWE/AI Intern @ Amazon
+            Incoming Symbolic Systems @ Stanford · SWE/AI Intern @ Amazon
           </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-6xl">
