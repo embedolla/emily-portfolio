@@ -12,8 +12,8 @@ type School = {
 const schools: School[] = [
   {
     school: "Stanford University",
-    credential: "B.S. in Computer Science (planned)",
-    detail: "Incoming freshman — excited to dive into CS, AI, and its intersection with policy and society.",
+    credential: "B.S. in Symbolic Systems (planned)",
+    detail: "Incoming freshman excited to dive into CS, AI, and its intersection with policy and society. I'm planning to major in Symbolic Systems, minor in Public Policy, and complete a master's in Computer Science.",
     period: "2026 – 2030 · Incoming",
     upcoming: true,
   },

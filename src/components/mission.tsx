@@ -5,7 +5,7 @@ const pillars = [
   {
     icon: Landmark,
     title: "Responsible AI & policy",
-    body: "I want to help create legislation that reduces AI's harms — so the technology serves people instead of displacing them, and the people affected by it actually have a voice.",
+    body: "I want to help create legislation that reduces AI's harms so the technology serves people instead of displacing them, and the people affected by it actually have a voice.",
   },
   {
     icon: Leaf,
@@ -23,7 +23,7 @@ export function Mission() {
   return (
     <Section id="mission" eyebrow="My mission" title="What I care about">
       <p className="max-w-2xl text-xl font-medium leading-relaxed">
-        I build with technology — and I care deeply about whether it helps people
+        I build with technology, and I care deeply about whether it helps people
         and the planet.
       </p>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
