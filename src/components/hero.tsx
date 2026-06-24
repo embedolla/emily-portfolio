@@ -80,10 +80,10 @@ export function Hero() {
           </h1>
 
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-            I build with technology — and I care deeply about whether it helps
-            people and the planet. Looking ahead, I hope to work in AI research
-            and public policy that keep it from harming people or the
-            environment.
+            I build with technology, and I care deeply about whether it helps
+            people and the planet. Looking ahead, I hope to work in AI research,
+            start or work at a tech nonprofit, or shape public policy that keeps
+            it from harming people or the environment.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
