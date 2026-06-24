@@ -20,11 +20,12 @@ export function Critters() {
   const { resolvedTheme } = useTheme();
 
   if (!atmo || reduce) return null;
+  const dark = resolvedTheme === "dark";
   // Fireflies only glow in dark mode; in light mode the night is simply still.
   if (atmo.phase === "night") {
-    return resolvedTheme === "dark" ? <Fireflies /> : null;
+    return dark ? <Fireflies /> : null;
   }
-  return <FallingSeason season={atmo.season} />;
+  return <FallingSeason season={atmo.season} dark={dark} />;
 }
 
 /* -------------------------------- Fireflies ------------------------------- */
@@ -137,9 +138,21 @@ const SEASON_CONFIG: Record<Season, SeasonConfig> = {
   },
 };
 
-function FallingSeason({ season }: { season: Season }) {
+function FallingSeason({ season, dark }: { season: Season; dark: boolean }) {
   const cfg = SEASON_CONFIG[season];
   const items = Array.from({ length: cfg.count });
+
+  // Summer pollen glows like a firefly — only fitting against a dark sky.
+  // In light mode, render it as a soft, non-luminous drifting speck instead.
+  const style: React.CSSProperties =
+    season === "summer" && !dark
+      ? {
+          width: 7,
+          height: 7,
+          borderRadius: "9999px",
+          background: "rgba(200,170,110,0.5)",
+        }
+      : cfg.style;
 
   return (
     <div
@@ -155,7 +168,7 @@ function FallingSeason({ season }: { season: Season }) {
           <motion.span
             key={i}
             className="absolute top-0"
-            style={{ left: `${left}%`, ...cfg.style }}
+            style={{ left: `${left}%`, ...style }}
             initial={{ y: "-12vh", opacity: 0 }}
             animate={{
               y: "112vh",

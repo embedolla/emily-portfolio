@@ -14,17 +14,23 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Mission />
       <SectionDivider />
       <Projects />
+      <SectionDivider />
       <GithubActivity />
       <SectionDivider />
       <Skills />
+      <SectionDivider />
       <Experience />
+      <SectionDivider />
       <Education />
       <SectionDivider />
       <Honors />
+      <SectionDivider />
       <Contact />
     </>
   );
