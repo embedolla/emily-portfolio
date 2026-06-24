@@ -133,7 +133,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
           className="relative mx-auto w-full max-w-sm"
         >
-          <div className="grid h-80 grid-cols-2 gap-3 rotate-[-2deg] sm:h-[440px]">
+          <div className="grid h-80 grid-cols-2 gap-3 sm:h-[440px]">
             <div className="relative row-span-2 overflow-hidden rounded-2xl border-4 border-card shadow-lg">
               <Image
                 src="/photos/tree.jpg"
