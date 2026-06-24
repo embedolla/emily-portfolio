@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useGroveAtmosphere, type Phase } from "@/lib/grove-atmosphere";
 
 /**
@@ -18,7 +18,20 @@ const SKY: Record<Phase, string> = {
 
 export function Sky() {
   const atmo = useGroveAtmosphere();
+  const reduce = useReducedMotion();
   if (!atmo) return null;
+
+  // Reduced motion: show the current phase's tint statically, no crossfade.
+  if (reduce) {
+    return (
+      <div
+        aria-hidden
+        className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute inset-0" style={{ background: SKY[atmo.phase] }} />
+      </div>
+    );
+  }
 
   return (
     <div

@@ -5,11 +5,7 @@ const honors = [
   "QuestBridge Match Finalist & College Prep Scholar",
   "National Hispanic Recognition Program",
   "National First-Generation Recognition Program",
-  "AP Scholar with Distinction",
-  "98th-percentile SAT scorer in Texas",
   "Aerial Drone Competition — Nationals Champion (Communications Mission) + 6 awards",
-  "School Science Fair — 1st Place",
-  "100+ volunteer hours · National Junior Honor Society",
 ];
 
 const leadership = [

@@ -20,6 +20,6 @@ That's why I'm drawn to AI where engineering meets policy. Code decides what's *
 
 ## Where I'm headed
 
-Right now I'm an incoming CS student at Stanford, an intern at the Child Poverty Action Lab, and a person who still gets that little-bit-of-magic feeling every time something I built works. I want to keep that feeling — and make sure the things I build leave the world, and the people in it, a little better off.
+Right now I'm an incoming Symbolic Systems student at Stanford, an intern at the Child Poverty Action Lab, and a person who still gets that little-bit-of-magic feeling every time something I built works. I want to keep that feeling — and make sure the things I build leave the world, and the people in it, a little better off.
 
 More to come. 🌱

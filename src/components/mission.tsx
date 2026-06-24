@@ -23,8 +23,9 @@ export function Mission() {
   return (
     <Section id="mission" eyebrow="My mission" title="What I care about">
       <p className="max-w-2xl text-xl font-medium leading-relaxed">
-        I build with technology, and I care deeply about whether it helps people
-        and the planet.
+        The systems I love building also pull water from communities and can put
+        people out of work. I want to build — and help govern — AI so its
+        benefits reach people without those costs landing on the most vulnerable.
       </p>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
         I&apos;m drawn to AI in an interdisciplinary context, where engineering

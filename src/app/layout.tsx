@@ -32,6 +32,12 @@ export const metadata: Metadata = {
       "Building technology that helps people and the planet. AI research, AI for good, and responsible-AI policy.",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emily Bedolla — Software / AI Engineer",
+    description:
+      "Building technology that helps people and the planet. AI research, AI for good, and responsible-AI policy.",
+  },
 };
 
 export default function RootLayout({
