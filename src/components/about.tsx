@@ -28,24 +28,24 @@ export function About() {
       <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
         <div className="space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
-            I fell for computer science during quarantine, when I started
-            learning Python — that&apos;s the moment I knew this was my field.
-            Later, ChatGPT sparked my fascination with AI, and I set my sights on
-            becoming an AI engineer.
+            My interest for computer science began during quarantine, when I
+            started learning Python; that&apos;s the moment I knew this was my
+            field. Later, playing around with ChatGPT sparked my fascination with
+            AI, and I set my sights on becoming an AI engineer.
           </p>
           <p>
-            But the more I learned, the more I saw the other side. Friends told me
-            how their parents were laid off because of AI. I read about its water
-            consumption and the toll data centers take on surrounding communities.
-            I watched AI being used to replace genuine human effort. AI is
-            powerful — and it can be harmful. That tension is exactly what I want
-            to work on.
+            Even so, the more I learned, the more I saw the other side. Friends
+            told me how their parents were laid off because of AI. I read about
+            its water consumption and the toll data centers take on surrounding
+            communities. I watched AI being used to replace genuine human effort.
+            AI is powerful, and it can be harmful. That issue is exactly what I
+            want to work on.
           </p>
           <p>
             What drives me is giving back to everyone who helped me get here,
             building a safer world for future generations, and uplifting
             marginalized people and minorities by giving them a voice. My Catholic
-            faith grounds all of it: keeping love at the center, acting selflessly
+            faith grounds all of it: keeping God at the center, acting selflessly
             and kindly, and trying to be a mirror of God&apos;s love in the work I
             do.
           </p>
