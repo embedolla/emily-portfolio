@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
-const ROLES = ["engineer", "advocate", "builder for good"];
+const ROLES = ["CS student", "engineer", "advocate", "builder for good"];
 
 function useTypewriter(words: string[], typingMs = 90, pauseMs = 1600) {
   const [index, setIndex] = React.useState(0);
