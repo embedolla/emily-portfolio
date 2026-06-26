@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Command } from "cmdk";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
   Award,
@@ -39,6 +39,7 @@ export function CommandPalette() {
   const [open, setOpen] = React.useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const router = useRouter();
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -61,8 +62,19 @@ export function CommandPalette() {
     fn();
   };
 
-  const goTo = (id: string) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const goTo = (id: string) => {
+    // Section ids only exist on the home page. From /blog or /now, route to
+    // the home anchor instead of silently doing nothing.
+    if (pathname !== "/") {
+      router.push(`/#${id}`);
+      return;
+    }
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth" });
+    // Move focus to the section so keyboard/screen-reader users follow along.
+    el.focus({ preventScroll: true });
+  };
   const openLink = (url: string) =>
     window.open(url, "_blank", "noopener,noreferrer");
 
@@ -73,16 +85,17 @@ export function CommandPalette() {
       label="Command menu"
       className="fixed inset-0 z-[100] flex items-start justify-center"
     >
-      {/* Backdrop */}
-      <button
-        aria-label="Close command menu"
+      {/* Backdrop — click to dismiss. Not focusable; Escape also closes the
+          dialog (handled by cmdk), so this needn't be in the tab order. */}
+      <div
+        aria-hidden
         onClick={() => setOpen(false)}
         className="absolute inset-0 bg-black/40 backdrop-blur-sm"
       />
       <div className="relative mt-[15vh] w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-popover shadow-2xl">
         <Command.Input
           placeholder="Type a command or search…"
-          className="w-full border-b border-border bg-transparent px-4 py-3.5 text-sm outline-none placeholder:text-muted-foreground"
+          className="w-full border-b border-border bg-transparent px-4 py-3.5 text-sm outline-none ring-inset placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ring"
         />
         <Command.List className="max-h-80 overflow-y-auto p-2">
           <Command.Empty className="py-6 text-center text-sm text-muted-foreground">

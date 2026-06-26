@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const EMAIL = "emily.e.bedolla@gmail.com";
 
-type Status = "idle" | "sending" | "sent" | "error";
+type Status = "idle" | "sending" | "sent" | "error" | "fallback";
 
 const inputClass =
   "w-full rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30";
@@ -17,6 +17,12 @@ export function Contact() {
   const [status, setStatus] = React.useState<Status>("idle");
   const [error, setError] = React.useState<string | null>(null);
   const [copied, setCopied] = React.useState(false);
+  const errorRef = React.useRef<HTMLParagraphElement | null>(null);
+
+  // When a server-side error appears, move focus to it so it's announced.
+  React.useEffect(() => {
+    if (status === "error") errorRef.current?.focus();
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -45,11 +51,12 @@ export function Contact() {
       }
 
       if (data.fallback) {
-        // Email service not wired up yet — open the user's mail client.
+        // Email service not wired up yet — open the user's mail client and
+        // tell them what's happening (instead of silently resetting).
         window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
           `Hello from ${payload.name}`,
         )}&body=${encodeURIComponent(payload.message)}`;
-        setStatus("idle");
+        setStatus("fallback");
         return;
       }
 
@@ -84,7 +91,7 @@ export function Contact() {
               href={`mailto:${EMAIL}`}
               className={cn(buttonVariants({ variant: "outline" }))}
             >
-              <Mail className="size-4" />
+              <Mail className="size-4" aria-hidden />
               {EMAIL}
             </a>
             <button
@@ -94,9 +101,9 @@ export function Contact() {
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
             >
               {copied ? (
-                <Check className="size-4 text-primary" />
+                <Check className="size-4 text-primary" aria-hidden />
               ) : (
-                <Copy className="size-4" />
+                <Copy className="size-4" aria-hidden />
               )}
             </button>
           </div>
@@ -106,39 +113,65 @@ export function Contact() {
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium">
-                Name
+                Name{" "}
+                <span className="text-destructive" aria-hidden>
+                  *
+                </span>
               </label>
-              <input id="name" name="name" required className={inputClass} />
+              <input
+                id="name"
+                name="name"
+                required
+                aria-required="true"
+                aria-invalid={status === "error" || undefined}
+                aria-describedby={status === "error" ? "form-error" : undefined}
+                className={inputClass}
+              />
             </div>
             <div>
               <label htmlFor="email" className="mb-1.5 block text-sm font-medium">
-                Email
+                Email{" "}
+                <span className="text-destructive" aria-hidden>
+                  *
+                </span>
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
+                aria-required="true"
+                aria-invalid={status === "error" || undefined}
+                aria-describedby={status === "error" ? "form-error" : undefined}
                 className={inputClass}
               />
             </div>
           </div>
           <div>
             <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
-              Message
+              Message{" "}
+              <span className="text-destructive" aria-hidden>
+                *
+              </span>
             </label>
             <textarea
               id="message"
               name="message"
               required
+              aria-required="true"
+              aria-invalid={status === "error" || undefined}
+              aria-describedby={status === "error" ? "form-error" : undefined}
               rows={5}
               className={cn(inputClass, "resize-y")}
             />
           </div>
 
           {status === "sent" ? (
-            <p className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm text-primary">
-              <Check className="size-4" />
+            <p
+              role="status"
+              className="flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm text-primary"
+            >
+              <Check className="size-4" aria-hidden />
               Thank you! Your message is on its way. Expect a reply within 2
               business days! 🌱
             </p>
@@ -150,20 +183,46 @@ export function Contact() {
             >
               {status === "sending" ? (
                 <>
-                  <Loader2 className="size-4 animate-spin" />
+                  <Loader2 className="size-4 animate-spin" aria-hidden />
                   Sending…
                 </>
               ) : (
                 <>
-                  <Send className="size-4" />
+                  <Send className="size-4" aria-hidden />
                   Send message
                 </>
               )}
             </button>
           )}
 
+          {/* Polite live region for the mail-client fallback path. */}
+          {status === "fallback" && (
+            <p
+              role="status"
+              className="rounded-lg bg-secondary px-3 py-2 text-sm text-muted-foreground"
+            >
+              Opening your email app so you can send the message directly… If
+              nothing happens, email me at{" "}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="font-medium text-primary underline underline-offset-4"
+              >
+                {EMAIL}
+              </a>
+              .
+            </p>
+          )}
+
           {status === "error" && error && (
-            <p className="text-sm text-destructive">{error}</p>
+            <p
+              id="form-error"
+              ref={errorRef}
+              tabIndex={-1}
+              role="alert"
+              className="text-sm text-destructive outline-none"
+            >
+              {error}
+            </p>
           )}
         </form>
       </div>

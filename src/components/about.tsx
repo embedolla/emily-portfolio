@@ -7,6 +7,7 @@ import {
   Sprout,
   Tv,
   Users,
+  Volleyball,
 } from "lucide-react";
 import { Section } from "@/components/section";
 
@@ -15,7 +16,7 @@ const interests = [
   { label: "Baking & cooking", icon: Cake },
   { label: "Reading", icon: BookOpen },
   { label: "Friends & family", icon: Users },
-  { label: "Volleyball & roller skating", icon: Dumbbell },
+  { label: "Volleyball & roller skating", icon: Volleyball },
   { label: "The gym", icon: Dumbbell },
   { label: "Gardening", icon: Sprout },
   { label: "Watching shows", icon: Tv },
@@ -53,7 +54,7 @@ export function About() {
 
         <div className="rounded-2xl border border-border bg-card p-6">
           <h3 className="flex items-center gap-2 font-semibold">
-            <Sprout className="size-5 text-primary" />
+            <Sprout className="size-5 text-primary" aria-hidden />
             Beyond the code
           </h3>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -65,7 +66,7 @@ export function About() {
                 key={it.label}
                 className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-sm text-secondary-foreground"
               >
-                <it.icon className="size-3.5 text-primary" />
+                <it.icon className="size-3.5 text-primary" aria-hidden />
                 {it.label}
               </li>
             ))}

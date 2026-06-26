@@ -33,10 +33,10 @@ type Repo = {
   updated_at: string;
 };
 
-// Curated fallback shown when the live GitHub API is unavailable (e.g. the
-// unauthenticated rate limit is hit, or a hard refresh bypasses the cache).
-// Without this the whole section vanishes on refresh; with it the section
-// always renders and is upgraded to live data whenever the API responds.
+// Curated fallback shown when the live GitHub API is unavailable — e.g. the
+// unauthenticated rate limit (60 req/hr) is hit, or the build-time fetch
+// failed. Without this the section returned null and vanished entirely; with
+// it the section always renders and is upgraded to live data when reachable.
 const FALLBACK_REPOS: Repo[] = [
   {
     name: "OpenTUI-Multilingual-Project",
@@ -118,9 +118,9 @@ async function getData(): Promise<{ profile: Profile | null; repos: Repo[] }> {
 export async function GithubActivity() {
   const { profile, repos } = await getData();
 
-  // Always render the section. When the live API fails (rate limit, transient
-  // error, or a dev hard-refresh that bypasses the fetch cache) fall back to a
-  // curated repo list instead of disappearing entirely.
+  // Always render the section. When the live API fails (rate limit or a
+  // transient/build-time error) fall back to a curated repo list instead of
+  // disappearing entirely.
   const displayRepos = repos.length > 0 ? repos : FALLBACK_REPOS;
 
   return (

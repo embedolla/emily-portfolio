@@ -16,12 +16,18 @@ import { cn } from "@/lib/utils";
 
 const ROLES = ["CS student", "engineer", "advocate", "builder for good"];
 
-function useTypewriter(words: string[], typingMs = 90, pauseMs = 1600) {
+function useTypewriter(
+  words: string[],
+  enabled = true,
+  typingMs = 90,
+  pauseMs = 1600,
+) {
   const [index, setIndex] = React.useState(0);
   const [text, setText] = React.useState("");
   const [deleting, setDeleting] = React.useState(false);
 
   React.useEffect(() => {
+    if (!enabled) return;
     const current = words[index % words.length];
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -41,14 +47,16 @@ function useTypewriter(words: string[], typingMs = 90, pauseMs = 1600) {
       );
     }
     return () => clearTimeout(timeout);
-  }, [text, deleting, index, words, typingMs, pauseMs]);
+  }, [text, deleting, index, words, typingMs, pauseMs, enabled]);
 
-  return text;
+  return enabled ? text : words[words.length - 1];
 }
 
 export function Hero() {
-  const typed = useTypewriter(ROLES);
   const reduce = useReducedMotion();
+  // Skip the character-by-character animation (JS-driven, so the global
+  // reduced-motion CSS can't stop it) for users who prefer reduced motion.
+  const typed = useTypewriter(ROLES, !reduce);
 
   // Pointer position, normalized to -0.5 … 0.5 across the viewport.
   const px = useMotionValue(0);
@@ -70,8 +78,9 @@ export function Hero() {
   return (
     <section
       id="home"
+      tabIndex={-1}
       onPointerMove={handlePointer}
-      className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-12 md:py-8"
+      className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-12 outline-none md:py-8"
     >
       {/* Soft Grove gradient blobs (parallax with cursor + scroll) */}
       <motion.div
@@ -92,17 +101,22 @@ export function Hero() {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm text-muted-foreground">
-            <Sprout className="size-4 text-primary" />
-            Incoming Symbolic Systems @ Stanford · SWE/AI Intern @ Amazon
+            <Sprout className="size-4 text-primary" aria-hidden />
+            Incoming Symbolic Systems @ Stanford · Incoming SWE/AI Intern @ Amazon
           </span>
 
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-6xl">
             Hi, I&apos;m Emily Bedolla — <br className="hidden sm:block" />
-            <span className="text-primary">
+            <span className="text-primary" aria-hidden="true">
               {typed}
               <span className="animate-caret ml-1 inline-block w-[3px] bg-primary align-middle">
                 &nbsp;
               </span>
+            </span>
+            {/* Stable, screen-reader-only label so the continuously changing
+                typewriter text doesn't rename the heading on every keystroke. */}
+            <span className="sr-only">
+              a CS student, engineer, advocate, and builder for good
             </span>
           </h1>
 
@@ -116,7 +130,7 @@ export function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#projects" className={cn(buttonVariants({ size: "lg" }))}>
               View my work
-              <ArrowRight className="size-4" />
+              <ArrowRight className="size-4" aria-hidden />
             </a>
             <a
               href="#contact"
@@ -190,7 +204,10 @@ export function Hero() {
               />
             </div>
           </div>
-          <span className="absolute -bottom-3 -left-3 grid size-10 rotate-[-8deg] place-items-center rounded-full bg-primary text-primary-foreground shadow-md">
+          <span
+            aria-hidden
+            className="absolute -bottom-3 -left-3 grid size-10 rotate-[-8deg] place-items-center rounded-full bg-primary text-primary-foreground shadow-md"
+          >
             <Sprout className="size-5" />
           </span>
         </motion.div>
