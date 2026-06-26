@@ -52,9 +52,9 @@ export function MobileNav() {
             aria-hidden
             tabIndex={-1}
             onClick={close}
-            className="fixed inset-0 top-16 z-40 cursor-default bg-background/50 backdrop-blur-sm"
+            className="fixed inset-0 top-16 z-40 cursor-default bg-background/80 backdrop-blur-sm"
           />
-          <nav className="fixed inset-x-0 top-16 z-50 border-b border-border bg-card/95 backdrop-blur-md">
+          <nav className="fixed inset-x-0 top-16 z-50 border-b border-border bg-card shadow-lg">
             <ul className="mx-auto flex max-w-5xl flex-col gap-1 px-4 py-3">
               {links.map((l) => (
                 <li key={l.href}>

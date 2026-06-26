@@ -71,7 +71,7 @@ export function Hero() {
     <section
       id="home"
       onPointerMove={handlePointer}
-      className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden"
+      className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-12 md:py-8"
     >
       {/* Soft Grove gradient blobs (parallax with cursor + scroll) */}
       <motion.div
