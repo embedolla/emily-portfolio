@@ -51,11 +51,20 @@ export default async function BlogPost({
       <h1 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">{post.title}</h1>
 
       <div
-        className="prose mt-8 max-w-none text-foreground
+        className="mt-8 max-w-none text-foreground
           [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4
-          [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-semibold
-          [&_li]:my-1 [&_p]:my-4 [&_p]:leading-relaxed [&_p]:text-muted-foreground
-          [&_strong]:text-foreground [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6"
+          [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-semibold
+          [&_h3]:mt-8 [&_h3]:text-xl [&_h3]:font-semibold
+          [&_p]:my-4 [&_p]:leading-relaxed [&_p]:text-muted-foreground
+          [&_strong]:font-semibold [&_strong]:text-foreground
+          [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6
+          [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6
+          [&_li]:my-1 [&_li]:text-muted-foreground
+          [&_blockquote]:my-4 [&_blockquote]:border-l-4 [&_blockquote]:border-primary/40 [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-muted-foreground
+          [&_code]:rounded [&_code]:bg-secondary [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm
+          [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border [&_pre]:bg-secondary [&_pre]:p-4
+          [&_pre_code]:bg-transparent [&_pre_code]:p-0
+          [&_img]:rounded-xl [&_hr]:my-8 [&_hr]:border-border"
       >
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{post.content}</ReactMarkdown>
       </div>

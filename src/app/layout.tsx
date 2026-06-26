@@ -49,6 +49,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
@@ -58,9 +59,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <a
+            href="#main"
+            className="sr-only z-[200] rounded-md bg-primary px-4 py-2 text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-4"
+          >
+            Skip to content
+          </a>
           <Sky />
           <Navbar />
-          <main className="flex flex-1 flex-col">{children}</main>
+          <main id="main" tabIndex={-1} className="flex flex-1 flex-col outline-none">
+            {children}
+          </main>
           <Footer />
           <CommandPalette />
           <EasterEgg />

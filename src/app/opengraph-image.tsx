@@ -63,7 +63,7 @@ export default function OpengraphImage() {
           <span>and the planet.</span>
         </div>
         <div style={{ fontSize: 30, color: "#5c6b62", marginTop: 36 }}>
-          Software / AI Engineer · Incoming CS @ Stanford 🌱
+          Software / AI Engineer · Incoming Symbolic Systems @ Stanford 🌱
         </div>
       </div>
     ),
