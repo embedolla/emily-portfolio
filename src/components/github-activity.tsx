@@ -5,12 +5,13 @@ import { GithubIcon } from "@/components/icons";
 
 const USER = "embedolla";
 
-// Per-repo placeholder screenshots — swap these SVGs in public/projects/ for
-// real screenshots as projects mature. Unmatched repos fall back to default.svg.
+// Per-repo screenshots in public/projects/. Repos with a real screenshot point
+// to a .png; the rest use placeholder SVGs. Unmatched repos fall back to
+// default.svg.
 const repoImages: Record<string, string> = {
-  "OpenTUI-Multilingual-Project": "/projects/OpenTUI-Multilingual-Project.svg",
-  "CPAL-Virtual-Clock-Wall": "/projects/CPAL-Virtual-Clock-Wall.svg",
-  "emily-portfolio": "/projects/emily-portfolio.svg",
+  "OpenTUI-Multilingual-Project": "/projects/OpenTUI-Multilingual-Project.png",
+  "CPAL-Virtual-Clock-Wall": "/projects/CPAL-Virtual-Clock-Wall.png",
+  "emily-portfolio": "/projects/emily-portfolio.png",
   "quiz-app": "/projects/quiz-app.svg",
 };
 

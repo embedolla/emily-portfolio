@@ -46,3 +46,4 @@ Resume __ Emily Bedolla.pdf
 # Local test/screenshot artifacts (root-level only; keeps public/ assets safe)
 .playwright-mcp/
 /*.png
+desktop.ini
